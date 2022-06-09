@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="styles/style.css" rel="stylesheet" />
     <title>Weather Report</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <header id="header">
+      <img
+        id="temp-landscape"
+        src="https://placekitten.com/g/800/200"
+        alt="temp-landscape"
+      />
+      <div class="text-overlay">Hello, City!</div>
+    </header>
+    <main id="main-content">
+      <div class="content-container">
+        <section class="temp-section">
+          <div class="temp-content">
+            <h2>Current Temperature</h2>
+            <p>TEMPERATURE STUFF GOES HERE</p>
+          </div>
+        </section>
+        <section class="city-section">
+          <div class="city-content">
+            <h2>Where you at?</h2>
+            <p>CITY STUFF GOES HERE</p>
+          </div>
+        </section>
+        <section class="sky-section">
+          <div class="sky-content">
+            <h2>Sky Selector</h2>
+            <p>SKYYYY</p>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer id="footer">Copyright 2022 Juli Tera</footer>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+  </body>
 </html>
