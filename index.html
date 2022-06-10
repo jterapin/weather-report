@@ -9,7 +9,7 @@
   </head>
   <body>
     <header id="header">
-      <h1>hello city!</h1>
+      <h1>hello <span id="currentCity">World</span>!</h1>
     </header>
     <main id="main-content">
       <div class="content-container">
@@ -34,7 +34,13 @@
         <section class="city-section">
           <div class="city-content">
             <h2>Where you at?</h2>
-            <p>CITY STUFF GOES HERE</p>
+            <input
+              id="cityInput"
+              type="text"
+              value="World"
+              maxlength="12"
+              placeholder="Type in your city!"
+            />
           </div>
         </section>
         <section class="sky-section">

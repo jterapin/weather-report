@@ -1,7 +1,8 @@
 'use strict';
 
 const state = {
-  temp: 50,
+  temp: 80,
+  city: 'World',
 };
 
 const increaseTemp = () => {
@@ -44,14 +45,26 @@ const updateTemp = () => {
   }
 };
 
+const updateCity = () => {
+  const updatedCity = document.getElementById('cityInput').value;
+  const currentCity = document.getElementById('currentCity');
+  state.city = updatedCity;
+  currentCity.textContent = state.city;
+};
+
 // register events
 const registerEventHandlers = () => {
   updateTemp();
+  updateCity();
+
   const increaseTemperature = document.getElementById('tempUp');
   increaseTemperature.addEventListener('click', increaseTemp);
 
   const decreaseTemperature = document.getElementById('tempDown');
   decreaseTemperature.addEventListener('click', decreaseTemp);
+
+  const cityInputUpdate = document.getElementById('cityInput');
+  cityInputUpdate.addEventListener('input', updateCity);
 };
 
 // DOM listener

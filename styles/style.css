@@ -13,14 +13,14 @@
     border-radius: 2px;
 }
 
-/* html {
-    cursor: url('../images/nat885.cur'), auto;	
-}  */
+html {
+    cursor: url('../assets/sunny-cursor.cur'), auto;	
+} 
 
-/* ::selection {
+::selection {
     background-color: #F8E16C;
     color: #51B6E8;
-    } */
+    }
 
 @font-face {
     font-family: silkscreen;
