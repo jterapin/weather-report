@@ -44,7 +44,7 @@ h1 {
     font-family: silkscreen;
     color: #FFBEE3;
     text-shadow: 5px 2px 1px #51B6E8;
-    font-size: 3em;
+    font-size: 2em;
     word-spacing: 5px;
 }
 
@@ -97,6 +97,9 @@ h1 {
     color: #010203
 }
 
+.red {
+    color:purple;
+}
 
 /* GRID */
 
@@ -122,6 +125,7 @@ h1 {
     text-align: center;
     font-family: silkscreen;
     color: #fceaf5;
+    user-select:none
 }
 
 .temp-content a{

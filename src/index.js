@@ -1,21 +1,21 @@
 'use strict';
 
 const state = {
-  temp: 80,
+  temp: 0,
   city: 'World',
 };
 
 const increaseTemp = () => {
   state.temp += 1;
-  updateTemp();
+  updateTempAppearance();
 };
 
 const decreaseTemp = () => {
   state.temp -= 1;
-  updateTemp();
+  updateTempAppearance();
 };
 
-const updateTemp = () => {
+const updateTempAppearance = () => {
   const tempCurrent = document.querySelector('#tempCurrent');
   tempCurrent.textContent = state.temp;
 
@@ -52,9 +52,63 @@ const updateCity = () => {
   currentCity.textContent = state.city;
 };
 
+const resetCityValue = () => {
+  let updatedCity = document.getElementById('cityInput');
+  const currentCity = document.getElementById('currentCity');
+  state.city = 'World';
+  updatedCity.value = state.city;
+  currentCity.textContent = state.city;
+};
+
+const findLatitudeAndLongitude = () => {
+  let latitude, longitude;
+  axios
+    .get('https://weather-report-proxy-server.herokuapp.com/location', {
+      params: {
+        q: state.city,
+      },
+    })
+    .then((response) => {
+      latitude = response.data[0].lat;
+      longitude = response.data[0].lon;
+
+      // make the next API call here!
+      findTemperature(latitude, longitude);
+    })
+    .catch((error) => {
+      console.log('error in findLatitudeAndLongitude!');
+    });
+};
+
+const temp = document.getElementById('currentTemp');
+
+const findTemperature = (latitude, longitude) => {
+  axios
+    .get('https://weather-report-proxy-server.herokuapp.com/weather', {
+      params: {
+        lat: latitude,
+        lon: longitude,
+      },
+    })
+    .then((response) => {
+      const kelvin = response.data['current']['temp'];
+      state.temp = convertKelvinToFahrenheit(kelvin);
+      updateTempAppearance();
+    })
+    .catch((error) => {
+      console.log('error in weather info!');
+    });
+};
+
+const convertKelvinToFahrenheit = (kelvin) => {
+  let fahrenheit;
+  fahrenheit = parseInt(1.8 * (kelvin - 273) + 32);
+  return fahrenheit;
+};
+
 // register events
 const registerEventHandlers = () => {
-  updateTemp();
+  updateTempAppearance();
   updateCity();
 
   const increaseTemperature = document.getElementById('tempUp');
@@ -65,6 +119,12 @@ const registerEventHandlers = () => {
 
   const cityInputUpdate = document.getElementById('cityInput');
   cityInputUpdate.addEventListener('input', updateCity);
+
+  const requestTemp = document.getElementById('getTemp');
+  requestTemp.addEventListener('click', findLatitudeAndLongitude);
+
+  const resetCity = document.getElementById('resetCity');
+  resetCity.addEventListener('click', resetCityValue);
 };
 
 // DOM listener

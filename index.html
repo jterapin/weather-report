@@ -9,7 +9,7 @@
   </head>
   <body>
     <header id="header">
-      <h1>hello <span id="currentCity">World</span>!</h1>
+      <h1>hello <span id="currentCity"></span>!</h1>
     </header>
     <main id="main-content">
       <div class="content-container">
@@ -26,9 +26,10 @@
             </div>
             <div id="temp-controls">
               <span id="tempUp">&lt;-</span>
-              <span id="tempCurrent">TBD</span>
+              <span id="tempCurrent" class="red">TBD</span>
               <span id="tempDown">-></span>
             </div>
+            <button id="getTemp" type="button">Get Temp!</button>
           </div>
         </section>
         <section class="city-section">
@@ -41,6 +42,7 @@
               maxlength="12"
               placeholder="Type in your city!"
             />
+            <button id="resetCity">Reset City</button>
           </div>
         </section>
         <section class="sky-section">
