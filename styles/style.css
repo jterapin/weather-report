@@ -1,4 +1,3 @@
-
 ::-webkit-scrollbar {
     width: 20px;
 }
@@ -13,14 +12,14 @@
     border-radius: 2px;
 }
 
-html {
-    cursor: url('../assets/sunny-cursor.cur'), auto;	
-} 
-
 ::selection {
     background-color: #F8E16C;
     color: #51B6E8;
     }
+
+* {
+    cursor: url('../assets/cute-cursor.cur'), auto;	
+} 
 
 @font-face {
     font-family: silkscreen;
@@ -32,13 +31,38 @@ body {
     height: 700px;
     margin-left:auto;
     margin-right:auto;
-    background-color: #8F6EC6;
     grid-template: .5fr 1fr .5fr / 1fr ;
     display: grid;
 }
 
+/* BACKGROUND - AFFECTED BY SKY SELECTOR */
+
+.bg-default {
+    background-color: #8F6EC6;
+}
+
+.bg-rainy {
+    background-image: url("../assets/sky-rain-bg.gif");
+    background-color: #8F6EC6;
+}
+
+.bg-snowy {
+    background-image: url("../assets/sky-snowy-bg.gif");
+    background-color: #8F6EC6;
+}
+
+.bg-sunny {
+    background-image: url("../assets/sky-sunny-bg.png");
+    background-color: #8F6EC6;
+}
+
+.bg-cloudy {
+    background-image: url("../assets/sky-clouds-bg.png");
+    background-color: #8F6EC6;
+
+}
+
 h1 {
-    /* background-color: #FFBEE3; */
     margin: 5px;
     text-align: center;
     font-family: silkscreen;
@@ -58,18 +82,6 @@ h1 {
     font-size: 2em;
     position: relative;
 }
-/* 
-#temp-landscape {
-    outline: solid 4px #51B6E8;
-} */
-
-.text-overlay {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 
 #main-content {
     background-color: #FFBEE3;
@@ -95,10 +107,6 @@ h1 {
 
 #footer a {
     color: #010203
-}
-
-.red {
-    color:purple;
 }
 
 /* GRID */
@@ -138,11 +146,9 @@ h1 {
     background-color: #51B6E8;
 }
 
-
 #tempCurrent {
     font-size: 35px;
 }
-
 
 .city-content {
     background-color: #F8E16C;

@@ -1,63 +1,75 @@
 'use strict';
 
 const state = {
-  temp: 0,
+  temp: 70,
   city: 'World',
 };
 
 const increaseTemp = () => {
   state.temp += 1;
-  updateTempAppearance();
+  updateTempText();
+  updateLandscape();
 };
 
 const decreaseTemp = () => {
   state.temp -= 1;
-  updateTempAppearance();
+  updateTempText();
+  updateLandscape();
 };
 
-const updateTempAppearance = () => {
+const updateTempText = () => {
   const tempCurrent = document.querySelector('#tempCurrent');
   tempCurrent.textContent = state.temp;
+  if (state.temp > 80) {
+    tempCurrent.style.color = 'red';
+  } else if (state.temp > 70) {
+    tempCurrent.style.color = 'orange';
+  } else if (state.temp > 60) {
+    tempCurrent.style.color = 'yellow';
+  } else if (state.temp > 50) {
+    tempCurrent.style.color = 'blue';
+  } else {
+    tempCurrent.style.color = 'aqua';
+  }
+};
 
+const updateLandscape = () => {
   const landscapeImage = document.querySelector('#landscape-img');
   const landscapeText = document.querySelector('#landscape-text');
 
   if (state.temp > 80) {
-    tempCurrent.style.color = 'red';
     landscapeImage.src = 'assets/ChickenNotHappy.png';
     landscapeText.textContent = 'UGH TOO HOT';
   } else if (state.temp > 70) {
-    tempCurrent.style.color = 'orange';
     landscapeImage.src = 'assets/ChickenHappy.png';
     landscapeText.textContent = "Let's go outside lol";
   } else if (state.temp > 60) {
-    tempCurrent.style.color = 'yellow';
     landscapeImage.src = 'assets/ChickenJustRight.png';
     landscapeText.textContent = 'Ooo, feels nice';
   } else if (state.temp > 50) {
-    tempCurrent.style.color = 'blue';
     landscapeImage.src = 'assets/ChickenTooCold.png';
     landscapeText.textContent = "Where's Spring?";
   } else {
-    tempCurrent.style.color = 'aqua';
     landscapeImage.src = 'assets/ChickenSuperCold.png';
     landscapeText.textContent = "I'm not moving";
   }
 };
 
 const updateCity = () => {
-  const updatedCity = document.getElementById('cityInput').value;
+  const updatedCity = document.getElementById('cityInput');
   const currentCity = document.getElementById('currentCity');
-  state.city = updatedCity;
+  state.city = updatedCity.value;
   currentCity.textContent = state.city;
 };
 
 const resetCityValue = () => {
-  let updatedCity = document.getElementById('cityInput');
+  const updatedCity = document.getElementById('cityInput');
   const currentCity = document.getElementById('currentCity');
   state.city = 'World';
+  state.temp = 70;
   updatedCity.value = state.city;
   currentCity.textContent = state.city;
+  updateTempText();
 };
 
 const findLatitudeAndLongitude = () => {
@@ -80,8 +92,6 @@ const findLatitudeAndLongitude = () => {
     });
 };
 
-const temp = document.getElementById('currentTemp');
-
 const findTemperature = (latitude, longitude) => {
   axios
     .get('https://weather-report-proxy-server.herokuapp.com/weather', {
@@ -93,22 +103,40 @@ const findTemperature = (latitude, longitude) => {
     .then((response) => {
       const kelvin = response.data['current']['temp'];
       state.temp = convertKelvinToFahrenheit(kelvin);
-      updateTempAppearance();
+      updateTempText();
+      updateLandscape();
     })
     .catch((error) => {
       console.log('error in weather info!');
     });
 };
 
+// Convert Kelvin to Fahrenheit
 const convertKelvinToFahrenheit = (kelvin) => {
   let fahrenheit;
   fahrenheit = parseInt(1.8 * (kelvin - 273) + 32);
   return fahrenheit;
 };
 
+const updateSky = () => {
+  const skyValue = document.getElementById('skies').value;
+  const background = document.querySelector('body');
+
+  if (skyValue === 'sunny') {
+    background.className = 'bg-sunny';
+  } else if (skyValue === 'cloudy') {
+    background.className = 'bg-cloudy';
+  } else if (skyValue === 'rainy') {
+    background.className = 'bg-rainy';
+  } else if (skyValue === 'snowy') {
+    background.className = 'bg-snowy';
+  } else {
+    background.className = 'bg-default';
+  }
+};
+
 // register events
 const registerEventHandlers = () => {
-  updateTempAppearance();
   updateCity();
 
   const increaseTemperature = document.getElementById('tempUp');
@@ -125,6 +153,9 @@ const registerEventHandlers = () => {
 
   const resetCity = document.getElementById('resetCity');
   resetCity.addEventListener('click', resetCityValue);
+
+  const selectSky = document.querySelector('#skies');
+  selectSky.addEventListener('change', updateSky);
 };
 
 // DOM listener
