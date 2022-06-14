@@ -1,0 +1,190 @@
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #51B6E8;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #FFBEE3;
+    border-radius: 2px;
+}
+
+::selection {
+    background-color: #F8E16C;
+    color: #51B6E8;
+    }
+
+* {
+    cursor: url('/cute-cursor.fc6b3e5c.cur'), auto;	
+} 
+
+@font-face {
+    font-family: silkscreen;
+    src: url(/slkscr.4864837b.ttf);
+}
+
+body {
+    width:800px;
+    height: 700px;
+    margin-left:auto;
+    margin-right:auto;
+    grid-template: .5fr 1fr .5fr / 1fr ;
+    display: grid;
+}
+
+/* BACKGROUND - AFFECTED BY SKY SELECTOR */
+
+.bg-default {
+    background-color: #8F6EC6;
+}
+
+.bg-rainy {
+    background-image: url("/sky-rain-bg.95ab1b0f.gif");
+    background-color: #8F6EC6;
+}
+
+.bg-snowy {
+    background-image: url("/sky-snowy-bg.cf427671.gif");
+    background-color: #8F6EC6;
+}
+
+.bg-sunny {
+    background-image: url("/sky-sunny-bg.5a60de1d.png");
+    background-color: #8F6EC6;
+}
+
+.bg-cloudy {
+    background-image: url("/sky-clouds-bg.ff86095b.png");
+    background-color: #8F6EC6;
+
+}
+
+h1 {
+    margin: 5px;
+    text-align: center;
+    font-family: silkscreen;
+    color: #FFBEE3;
+    text-shadow: 5px 2px 1px #51B6E8;
+    font-size: 2em;
+    word-spacing: 5px;
+}
+
+#header {
+    grid-row: 1;
+    margin: 5px;
+    text-align: center;
+    font-family: silkscreen;
+    color: #8F6EC6;
+    text-shadow: 5px 2px 1px #51B6E8;
+    font-size: 2em;
+    position: relative;
+}
+
+#main-content {
+    background-color: #FFBEE3;
+    grid-row: 3;
+    margin: 5px;
+    outline: solid 4px #51B6E8;
+    padding: 50px;
+    color: #010203;
+    font-family: Helvetica, sans-serif;
+}
+
+#footer {
+    grid-row: 4;
+    text-align: center;
+    color: #010203;
+    font-size: .9em;
+    margin: 30px;
+    width: 150px;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 5px;
+}
+
+#footer a {
+    color: #010203
+}
+
+/* GRID */
+
+.content-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .5fr .5fr .5fr;
+    margin-left:auto;
+    margin-right:auto;
+    grid-row-gap: 20px;
+    width: 500px;
+}
+
+.temp-content {
+    background-color: #9577c6;
+    grid-column: 1;
+    grid-row: 1;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius: 30px;
+    padding: 30px;
+    font-size: 1.6em;
+    text-align: center;
+    font-family: silkscreen;
+    color: #fceaf5;
+    user-select:none
+}
+
+.temp-content a{
+    color: #fceaf5
+    
+}
+
+.temp-content a:hover{
+    text-decoration: none;
+    background-color: #51B6E8;
+}
+
+#tempCurrent {
+    font-size: 35px;
+}
+
+.city-content {
+    background-color: #F8E16C;
+    grid-column: 1;
+    grid-row: 2;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius: 30px;
+    padding: 30px;
+    font-size: 1.6em;
+    text-align: center;
+    color: #7449b9;
+    font-family: silkscreen;
+}
+
+.city-content ::selection {
+    background-color: #FFBEE3;
+    }
+
+.sky-content {
+    background-color: #51B6E8;
+    grid-column: 1;
+    grid-row: 3;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius: 30px;
+    padding: 30px;
+    font-size: 1.6em;
+    text-align: center;
+    color: #F8E16C;
+    font-family: silkscreen;
+}
+
+.sky-content ::selection {
+    background-color: #7449b9;
+    }
+
+
+/*# sourceMappingURL=/style.251b6741.css.map */

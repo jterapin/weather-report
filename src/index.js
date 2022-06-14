@@ -41,19 +41,24 @@ const updateLandscape = () => {
   const landscapeText = document.querySelector('#landscape-text');
 
   if (state.temp > 80) {
-    landscapeImage.src = 'assets/ChickenNotHappy.png';
+    const dict = { key: require('/assets/ChickenNotHappy.png') };
+    landscapeImage.src = dict.key;
     landscapeText.textContent = 'UGH TOO HOT';
   } else if (state.temp > 70) {
-    landscapeImage.src = 'assets/ChickenHappy.png';
+    const dict = { key: require('/assets/ChickenHappy.png') };
+    landscapeImage.src = dict.key;
     landscapeText.textContent = "Let's go outside lol";
   } else if (state.temp > 60) {
-    landscapeImage.src = 'assets/ChickenJustRight.png';
+    const dict = { key: require('/assets/ChickenJustRight.png') };
+    landscapeImage.src = dict.key;
     landscapeText.textContent = 'Ooo, feels nice';
   } else if (state.temp > 50) {
-    landscapeImage.src = 'assets/ChickenTooCold.png';
+    const dict = { key: require('/assets/ChickenTooCold.png') };
+    landscapeImage.src = dict.key;
     landscapeText.textContent = "Where's Spring?";
   } else {
-    landscapeImage.src = 'assets/ChickenSuperCold.png';
+    const dict = { key: require('/assets/ChickenSuperCold.png') };
+    landscapeImage.src = dict.key;
     landscapeText.textContent = "I'm not moving";
   }
 };
